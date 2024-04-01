@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../Style.css" />
+    <title>Fresh CartSign up Form</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      body {
+        color: #fff !important;
+        background: #4c535d !important;
+        font-family: "Roboto", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-form">
+      <form action="/register" method="post" id="signup">
+        <h2>Register Now</h2>
+        <p>It's free and only takes a minute.</p>
+        <hr />
+        <p id="response"></p>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            placeholder="username"
+            required="required"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            placeholder="Email Address"
+            required="required"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Password"
+            required="required"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            name="confirm_password"
+            placeholder="Confirm Password"
+            required="required"
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block btn-lg">
+            Register
+          </button>
+        </div>
+        <p class="small text-center">
+          By clicking the Sign Up button, you agree to our <br /><a href="#"
+            >Terms &amp; Conditions</a
+          >, and <a href="#">Privacy Policy</a>.
+        </p>
+      </form>
+      <div class="text-center">
+        Already Registered? <a href="login.html" class="logg">Login here</a>
+      </div>
+    </div>
+
+    <script src="register.js"></script>
+  </body>
+</html>

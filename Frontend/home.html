@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="Style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/jquery.slick/1.4.1/slick-theme.css"
+    />
+    <link rel="stylesheet" href="Slick/slick.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="/Images/Fav Icon.webp" type="image/x-icon" />
+    <title>Fresh Cart | Effortless Shopping</title>
+  </head>
+  <body>
+    <!---------------------------------- Header Start------------------------------------------->
+    <header class="main-header container-fluid">
+      <div class="branding">
+        <a href="#">
+          <img class="brand-img" src="images/Brand Image.png" />
+        </a>
+      </div>
+
+      <div class="search-bar">
+        <div class="location-search">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            fill="currentColor"
+            class="bi bi-geo-alt-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
+            />
+          </svg>
+          <input type="text" name="" id="" placeholder="Your Location" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-caret-down-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
+            />
+          </svg>
+        </div>
+        <div class="items-search">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+            />
+          </svg>
+          <a href="products/productPage.html">
+            <input
+              type="text"
+              name=""
+              id="search-input"
+              placeholder="Search for Vegetables/groceries/grains"
+              width="200%"
+              ;
+            />
+          </a>
+        </div>
+      </div>
+
+      <div
+        type="button"
+        class="collapse-nav"
+        data-bs-target="#canvas"
+        data-bs-toggle="offcanvas"
+      >
+        <div class="list">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            fill="currentColor"
+            class="bi bi-list"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <!-- ---------------------------------modal----------------------------- -->
+      <div class="offcanvas offcanvas-start" id="canvas">
+        <div class="offcanvas-header">
+          <div class="offcanvas-title">
+            <h2>Fresh Cart</h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+            ></button>
+          </div>
+        </div>
+        <div class="offcanvas-body">
+          <nav class="canvas-navbar">
+            <ul class="nav-list" id="canvas-list">
+              <li class="nav-items"><a href="#">Sell Your Crop</a></li>
+              <li class="nav-items"><a href="#">Order Bulky</a></li>
+              <li class="nav-items">
+                <a href="cart/cart.html">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="25"
+                    fill="currentColor"
+                    class="bi bi-basket"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"
+                    />
+                  </svg>
+                  Cart</a
+                >
+              </li>
+              <li class="nav-items profile modal-canvas">
+                <a href="login/signup.html">
+                  <button class="modal-canvas">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      fill="currentColor"
+                      class="bi bi-person-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                      <path
+                        fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+                      />
+                    </svg>
+                    Login
+                  </button>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-----------------------------navbar Start--------------------------->
+      <nav class="navbar nav">
+        <ul class="nav-list">
+          <li class="nav-items"><a href="#">Sell Your Crop</a></li>
+          <li class="nav-items bulk-order"><a href="#">Order Bulky</a></li>
+          <li class="nav-items">
+            <a href="cart/cart.html">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="25"
+                height="25"
+                fill="currentColor"
+                class="bi bi-basket"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5"
+                />
+              </svg>
+              Cart</a
+            >
+          </li>
+          <a href="login/signup.html">
+            <li class="nav-items profile">
+              <button data-bs-toggle="modal" data-bs-target="#myModal">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-person-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+                  />
+                </svg>
+                <span id="username"></span>
+              </button>
+            </li>
+          </a>
+        </ul>
+      </nav>
+      <!-----------------------------navbar End--------------------------->
+    </header>
+    <!---------------------------------- Header End------------------------------------------->
+
+    <section class="body-section">
+      <!-- ------------------------------- carrousel Start---------------------------- -->
+      <section class="container-fluid carousel">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="item active">
+              <a href="#"
+                ><img src="Images/sliderma.jpg" style="width: 100%"
+              /></a>
+            </div>
+            <div class="item">
+              <a href="#"
+                ><img src="Images/slide2.jpeg" style="width: 100%"
+              /></a>
+            </div>
+            <div class="item">
+              <a href="#"
+                ><img src="Images/slide3.webp" style="width: 100%"
+              /></a>
+            </div>
+          </div>
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a
+            class="right carousel-control"
+            href="#myCarousel"
+            data-slide="next"
+          >
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+      </section>
+      <!-- ------------------------------- carrousel Start------------------------------>
+
+      <!-- ------------------------------- Vegetables cards Start---------------------------- -->
+      <section class="vegetables">
+        <div class="heading">Fresh Vegetables</div>
+        <div class="veg-section"></div>
+        <center>
+          <button class="card-btn">
+            <a href="products/productPage.html">View all</a>
+          </button>
+        </center>
+      </section>
+
+      <section class="fruits">
+        <div class="heading">Fresh Fruits</div>
+        <div class="fruits-section"></div>
+        <center>
+          <button class="card-btn">
+            <a href="products/productPage.html">View all</a>
+          </button>
+        </center>
+      </section>
+
+      <section class="grains">
+        <div class="heading">Best Quality Flours and Grains</div>
+        <div class="grains-section"></div>
+        <center>
+          <button class="card-btn">
+            <a href="products/productPage.html">View all</a>
+          </button>
+        </center>
+      </section>
+      <!-- ------------------------------- cards close---------------------------- -->
+    </section>
+
+    <section class="about">
+      <div class="freshcart-offers">
+        <h4 class="main-head">What can you buy from Fresh Cart?</h4>
+        <h4>Fresh Quality Vegetables</h4>
+        <p>
+          Experience the epitome of farm-to-table freshness with our commitment
+          to delivering best quality vegetables directly from local farmers to
+          your doorstep. We pride ourselves on cutting out the middleman,
+          ensuring you receive the freshest produce at the best prices. By
+          establishing a direct connection between farmers and customers, we
+          empower local agriculture while providing you with a healthier and
+          more affordable choice for your everyday needs. Join us in supporting
+          sustainable farming practices and relish the unparalleled taste and
+          quality of vegetables harvested just for you.
+        </p>
+        <h4>Fresh Quality Fruits</h4>
+        <p>
+          Indulge in the pure goodness of nature with our commitment to
+          delivering fresh fruits straight from the orchard, cultivated without
+          the use of harmful chemicals. We take pride in offering a wide array
+          of naturally ripened, pesticide-free fruits, ensuring that you not
+          only savor the delightful flavors but also enjoy the health benefits
+          of wholesome produce. With our dedication to sustainable and
+          chemical-free farming practices, we invite you to embrace a healthier
+          lifestyle while relishing the unparalleled taste of fruits grown with
+          care and respect for the environment.
+        </p>
+        <h4>Quality Flours & Grains</h4>
+        <p>
+          Elevate your kitchen essentials with our selection of premium grains,
+          flours, and rice bags sourced directly from trusted farms. Our
+          commitment to quality extends to every grain, ensuring that you
+          receive unadulterated, wholesome products for your culinary creations.
+          By connecting you directly with farmers, we bring you a diverse range
+          of grains and flours, untouched by harmful additives. Experience the
+          essence of farm-fresh goodness in every meal, as we strive to provide
+          you with the finest pantry staples that contribute to both your
+          well-being and the sustainability of agriculture.
+        </p>
+      </div>
+
+      <div class="features">
+        <h4 class="main-head">Fresh Cart Offers</h4>
+        <h4>Sell Your Crop</h4>
+        <p>
+          Empowering farmers and fostering a transparent agricultural ecosystem,
+          we champion a revolutionary feature that allows farmers to freely sell
+          their crops without intermediaries. By eliminating middle brokers, we
+          ensure farmers receive the best prices for their hard work, while
+          customers enjoy direct access to the freshest produce. This
+          groundbreaking approach not only supports local agriculture but also
+          creates a fair and efficient marketplace, connecting farmers and
+          customers in a seamless exchange that benefits all. Join us in
+          revolutionizing the way we buy and enjoy fresh, quality crops while
+          uplifting the backbone of our food supply the dedicated farmers.
+        </p>
+        <h4>Order Bulky</h4>
+        <p>
+          Empower small vegetable shopkeepers with our exclusive bulk order
+          feature, designed to provide them access to high-quality produce at
+          the most reasonable costs. Recognizing the unique needs of local
+          businesses, our platform facilitates seamless bulk purchases directly
+          from farmers. By streamlining the procurement process, we aim to
+          support small shopkeepers in maintaining competitive pricing and
+          ensuring a consistent supply of fresh vegetables. Join us in enhancing
+          the sustainability and profitability of local businesses while
+          enjoying the convenience of hassle-free bulk ordering for your store.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="home">
+        <center><a href="#" class="home">Back to top</a></center>
+      </div>
+      <div class="footer-flex">
+        <div class="order">
+          <h5>Buy What you need</h5>
+          <a href="#">Vegetables</a>
+          <a href="#">Fruits</a>
+          <a href="#">Grains</a>
+          <a href="#">Flours</a>
+          <a href="#">Rice Bags</a>
+        </div>
+        <div class="about-us">
+          <h5>ABOUT</h5>
+          <a href="#">Contact Us</a>
+          <a href="#">About Us</a>
+          <a href="#">Fresh Cart Features</a>
+          <a href="#">Story Of Fresh Cart</a>
+        </div>
+        <div class="contact-us">
+          <h5>Contact On</h5>
+          <a href="#">Instagram</a>
+          <a href="#">Twitter</a>
+          <a href="#">Facebook</a>
+          <a href="#">Linked in</a>
+        </div>
+        <div class="need-help">
+          <h5>Help</h5>
+          <a href="#">Payments</a>
+          <a href="#">Shipping</a>
+          <a href="#">Cancellation</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="e-mail">
+          <h5>Get News Letter</h5>
+          <p>For the latest Offers and tips, mail us.</p>
+          <div class="newsletter">
+            <input type="e-mail" placeholder="Email address" />
+            <button>Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="terms-conditions">
+        <center>
+          <a href="https://github.com/Vikas-Prince">@Vikas Prince</a>
+          <p>Copyrights &copy 2023-2026 | All rights are reserved</p>
+        </center>
+      </div>
+    </footer>
+
+    <script>
+      // Extract username from URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const username = urlParams.get("username");
+
+      document.getElementById("username").textContent = username;
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="Slick/slick.min.js"></script>
+    <script src="jQuery.js"></script>
+    <script src="productPage.js"></script>
+  </body>
+</html>

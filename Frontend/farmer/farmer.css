@@ -35,6 +35,7 @@
 @media (max-width: 520px) {
   .input-box input,
   .input-box select {
+    border-radius: 8px !important;
     width: 100% !important;
   }
   .registration-section h3 {
@@ -120,8 +121,8 @@
 }
 
 @media (max-width: 820px) {
-  .farmer-navlist {
-    display: none !important;
+  .ds-none {
+    display: none;
   }
 
   .registration-section {
@@ -144,10 +145,6 @@
 }
 
 @media (min-width: 820px) {
-  #collapse {
-    display: none;
-  }
-
   .reg-filter-section {
     position: sticky;
     top: 70px;

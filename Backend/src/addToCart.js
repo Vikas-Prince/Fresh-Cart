@@ -115,5 +115,36 @@ app.post("/saveToCart", (req, res) => {
   });
 });
 
+app.post("/removeFromCart", (req, res) => {
+  const indexToRemove = req.body.index;
+  // Read cart data from cart.json
+  fs.readFile(cartFilePath, "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ success: false, error: "Internal Server Error" });
+      return;
+    }
+
+    let cartData = JSON.parse(data);
+    if (indexToRemove >= 0 && indexToRemove < cartData.length) {
+      // Remove item from cart data
+      cartData.splice(indexToRemove, 1);
+      // Write updated cart data back to cart.json
+      fs.writeFile(cartFilePath, JSON.stringify(cartData), (err) => {
+        if (err) {
+          console.error(err);
+          res
+            .status(500)
+            .json({ success: false, error: "Internal Server Error" });
+          return;
+        }
+        res.json({ success: true });
+      });
+    } else {
+      res.status(400).json({ success: false, error: "Invalid index" });
+    }
+  });
+});
+
 // Start the server
 module.exports = app;

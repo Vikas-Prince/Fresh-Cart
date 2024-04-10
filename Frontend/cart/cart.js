@@ -6,13 +6,30 @@ $(document).ready(function () {
     }
 
     function removeItemFromCart(index) {
-      $("#cart-item-" + index).remove();
-      data.splice(index, 1);
-      updateCartTotal();
+      // Send AJAX request to remove the item from the server and update the cart
+      $.ajax({
+        url: "/removeFromCart", // Endpoint to handle removing item from the cart
+        type: "POST",
+        data: { index: index },
+        success: function (response) {
+          if (response.success) {
+            // Remove the item from the DOM
+            $("#cart-item-" + index).remove();
+            // Update cart total
+            updateCartTotal();
+            calculateTotalPrice();
+          } else {
+            console.error("Failed to remove item:", response.error);
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error("Error removing item:", error);
+        },
+      });
     }
 
     function updateCartTotal() {
-      var totalItems = data.length;
+      var totalItems = $(".cart-main").length;
       $(".font-weight-bold").text("Cart (" + totalItems + " items)");
       $(".popup").text(totalItems);
     }
@@ -36,8 +53,12 @@ $(document).ready(function () {
       }
 
       $("#product_total_amt").text(totalPrice.toFixed(2));
-      var shippingCharge = 50.0;
-      $("#total_cart_amt").text((totalPrice + shippingCharge).toFixed(2));
+      if (totalPrice > 50) {
+        var shippingCharge = 50.0;
+        $("#total_cart_amt").text((totalPrice + shippingCharge).toFixed(2));
+      } else {
+        $("#total_cart_amt").text(0.0);
+      }
     }
 
     function updateItemTotal(index, newQuantity) {
@@ -151,25 +172,29 @@ var discountCode = document.getElementById("discount_code1");
 let discountApplied = false;
 
 const discount_code = () => {
-  if (!discountApplied) {
-    let totalamtcurr = parseInt(total_cart_amt.innerHTML);
-    let error_trw = document.getElementById("error_trw");
-    if (discountCode.value === "vikas") {
-      let newtotalamt = totalamtcurr - 50;
-      total_cart_amt.innerHTML = newtotalamt;
-      error_trw.innerHTML = "Hurray! code is valid";
-      discountApplied = true;
-    } else if (discountCode.value === "ajay") {
-      let newtotalamt = totalamtcurr - 70;
-      total_cart_amt.innerHTML = newtotalamt;
-      error_trw.innerHTML = "Hurray! code is valid";
-      discountApplied = true;
+  let totalamtcurr = parseInt(total_cart_amt.innerHTML);
+  let error_trw = document.getElementById("error_trw");
+
+  if (totalamtcurr >= 250) {
+    if (!discountApplied) {
+      if (discountCode.value === "vikas") {
+        let newtotalamt = totalamtcurr - 50;
+        total_cart_amt.innerHTML = newtotalamt;
+        error_trw.innerHTML = "Hurray! code is valid";
+        discountApplied = true;
+      } else if (discountCode.value === "ajay") {
+        let newtotalamt = totalamtcurr - 70;
+        total_cart_amt.innerHTML = newtotalamt;
+        error_trw.innerHTML = "Hurray! code is valid";
+        discountApplied = true;
+      } else {
+        error_trw.innerHTML = "Try Again! Valid code is vikas or ajay";
+      }
     } else {
-      error_trw.innerHTML = "Try Again! Valid code is vikas";
+      error_trw.innerHTML = "Discount has already been applied";
     }
   } else {
-    let error_trw = document.getElementById("error_trw");
-    error_trw.innerHTML = "Discount has already been applied";
+    error_trw.innerHTML = "Minimum amount for discount is 250";
   }
 };
 
@@ -183,3 +208,36 @@ var formattedNextDay = nextDay.toLocaleDateString("en-US", options);
 var output = formattedCurrentDate + " - " + formattedNextDay;
 
 $(".delivery-date").text(output);
+
+$(".delivery-address").hide();
+
+$(".btn-success").on("click", function () {
+  // $(".cart-main").hide();
+  $(".delivery-address").show("slow");
+  $(".font-weight-bold").hide();
+  $(".cart-main").hide();
+
+  $(this).hide();
+});
+
+$(document).ready(function () {
+  $("#responseContainer").hide();
+  $("#myForm").submit(function (event) {
+    event.preventDefault();
+
+    var formData = $(this).serialize();
+
+    $.ajax({
+      type: "POST",
+      url: "/order",
+      data: formData,
+      success: function (response) {
+        $("#cart-section").hide();
+        $("#responseContainer").show();
+      },
+      error: function (xhr, status, error) {
+        console.error("There was a problem with the AJAX request:", error);
+      },
+    });
+  });
+});

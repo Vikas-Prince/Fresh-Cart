@@ -7,7 +7,9 @@ const authenticateRouter = require("../src/authenticate");
 const routeRouter = require("../src/route");
 const addToCart = require("../src/addToCart");
 const farmerData = require("../src/farmer");
+const orders = require("../src/orders");
 
+app.use(orders);
 app.use(authenticateRouter);
 app.use(routeRouter);
 app.use(addToCart);

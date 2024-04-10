@@ -26,6 +26,10 @@ router.get("/cart", function (req, res) {
   res.sendFile(path.join(cartPath, "cart.html"));
 });
 
+router.get("/cartData", function (req, res) {
+  res.sendFile(path.join(staticDir, "cart/cart.json"));
+});
+
 router.get("/login", function (req, res) {
   res.sendFile(path.join(staticDir, "login/login.html"));
 });

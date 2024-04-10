@@ -255,19 +255,61 @@
           <div class="col-md-10 col-11 mx-auto">
             <div class="row mt-5 gx-3">
               <!-- left side div -->
+              <div class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow" id="cart-left">
+                
+                
+                <section class="delivery-address display">
+                  <h2 class="title">Delivery Address</h2>
+                  <form action="/order" id="myForm" class="register-form" method="post">
+                      <div class="input-box">
+                        <input type="text" name="firstName" placeholder="First Name" required />
+                        <input type="text" name="LastName" placeholder="Last Name" required />
+                        <input type="text" name="mobileNumber" placeholder="Mobile Number" required />
+                      </div>
+            
+                      <div class="input-box">
+                        <select id="state" name="state" required>
+                          <option value="">Select your State</option>
+                          <option value="andhra">Andhra Pradesh</option>
+                        </select>
+                        <select id="district" name="district"  required>
+                          <option value="">-Select Your District-</option>
+                          <option value="">East Godavari</option>
+                          <option value="">West Godavari</option>
+                          <option value="">Visakhapatnam</option>
+                          <option value="">Vizayanagaram</option>
+                          <option value="">Kadapa</option>
+                          <option value="">Krishna</option>
+                          <option value="">Guntur</option>
+                          <option value="">Nellore</option>
+                          <option value="">Chithoor</option>
+                        </select>
+                        <input type="text" name="pincode" placeholder="Enter Your PinCode" required />
+                      </div>
+                      <textarea class ="input-box" name="address" id="address"rows="4" placeholder="Enter Your Complete Address" required></textarea>
+                      <div class="input-check">
+                        <div class="form-check">
+                          <input type="radio" name="home" id="check0" aria-selected/>
+                          <label for="check0">Home</label>
+                        </div>
+                        <div class="form-check">
+                          <input type="radio" name="Office" id="check1" />
+                          <label for="check1">Office</label>
+                        </div>
+                      </div>
+                      <button class="lgbtn delivery-btn" type="submit">Delivery Here</button>
+                      <div>
+                    </form>
+                </section>
 
-              <div
-                class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow"
-                id="cart-left"
-              >
-                <h3 class="py-4 font-weight-bold" id="cart-heading"> </h3>
 
+                <h3 class=" font-weight-bold" id="cart-heading"> </h3>
               </div>
               <!-- right side div -->
               <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
                 <!-- Right side content -->
                 <div class="right_side p-3 shadow bg-white">
-                  <h2 class="product_name mb-5">The Total Amount Of</h2>
+                  <h2 class="product_name product-title mb-5">The Total Amount Of</h2>
                   <div class="price_indiv d-flex justify-content-between">
                     <p>Product amount</p>
                     <p>&#8377<span id="product_total_amt"></span></p>
@@ -305,7 +347,7 @@
                             type="text"
                             name=""
                             id="discount_code1"
-                            class="form-control font-weight-bold"
+                            class="form-control "
                             placeholder="Enter the discount code"
                           />
                           <small id="error_trw" class="text-dark mt-3"
@@ -335,6 +377,20 @@
         </div>
       </div>
     </section>
+
+
+
+    <section id="responseContainer">
+      <center>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2hmdDh5MjBpaTYwOHNoMHd5aHB3OGFkazlnMnNkdG12Nm15cTN5dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tf9jjMcO77YzV4YPwE/giphy.gif" alt="">
+        <h3>Thank You For Orderd in Fresh Cart!!</h3>
+        <span>Expected delivery date</span><h5 class="delivery-date"> </h5>
+        <a href="../home.html"><button class="hm-btn" data-bs-target="" type="button">Home</button></a>
+      </center>
+    </section>
+
+
+
 
     <!---------------------------------- Body section End---------------->
 

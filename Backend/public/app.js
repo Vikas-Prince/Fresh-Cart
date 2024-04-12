@@ -8,12 +8,14 @@ const routeRouter = require("../src/route");
 const addToCart = require("../src/addToCart");
 const farmerData = require("../src/farmer");
 const orders = require("../src/orders");
+const wishlist = require("../src/addToList");
 
 app.use(orders);
 app.use(authenticateRouter);
 app.use(routeRouter);
 app.use(addToCart);
 app.use(farmerData);
+app.use(wishlist);
 
 app.listen(3000, function () {
   console.log("Server listening on port 3000");

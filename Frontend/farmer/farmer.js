@@ -80,6 +80,12 @@ $(document).ready(function () {
   });
 });
 
+$(".f-btn").on("click", function () {
+  $(".main-section").hide();
+  $(".final-section").hide();
+  $(".registration-section").show();
+});
+
 $(document).ready(function () {
   $("#responseContainer").hide();
   $("#myForm").submit(function (event) {

@@ -35,7 +35,7 @@
     <!---------------------------------- Header Start------------------------------------------->
     <header class="main-header container-fluid">
       <div class="branding">
-        <a href="#">
+        <a href="">
           <img class="brand-img" src="../images/Brand Image.png" />
         </a>
       </div>
@@ -44,8 +44,8 @@
         <div class="location-search">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
+            width="18"
+            height="18"
             fill="currentColor"
             class="bi bi-geo-alt-fill"
             viewBox="0 0 16 16"
@@ -55,24 +55,18 @@
               d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"
             />
           </svg>
-          <input
-            type="text"
-            name=""
-            id="location"
-            placeholder="Your Location"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            class="bi bi-caret-down-fill"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"
-            />
-          </svg>
+          <select name="location" id="location">
+            <option value="0">Your Location</option>
+            <option value="">East Godavari</option>
+            <option value="">West Godavari</option>
+            <option value="">Visakhapatnam</option>
+            <option value="">Krishna</option>
+            <option value="">Guntoor</option>
+            <option value="">Vizayanagaram</option>
+            <option value="">Srikakulam</option>
+            <option value="">Kadapa</option>
+            <option value="">Chithoor</option>
+          </select>
         </div>
         <div class="items-search">
           <svg
@@ -136,7 +130,23 @@
           <nav class="canvas-navbar">
             <ul class="nav-list" id="canvas-list">
               <li class="nav-items"><a href="#">Sell Your Crop</a></li>
-              <li class="nav-items"><a href="#">Order Bulky</a></li>
+              <li class="nav-items">
+                <a href="../wishlisht/wishlist.html">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-heart"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                    />
+                  </svg>
+                  WishList</a
+                >
+              </li>
               <li class="nav-items">
                 <a href="cart/cart.html" id="cart-list">
                   <svg
@@ -186,7 +196,21 @@
             <a href="../farmer/farmer.html">Sell Your Crop</a>
           </li>
           <li class="nav-items bulk-order">
-            <a href="">Order Bulky</a>
+            <a href="../wishlist/wishlist.html">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="bi bi-heart"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                />
+              </svg>
+              WishList</a
+            >
           </li>
           <li class="nav-items popup-li">
             <a href="/cart/cart.html" class="cart-click" id="count">

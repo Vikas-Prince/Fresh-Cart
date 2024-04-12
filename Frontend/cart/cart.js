@@ -96,7 +96,7 @@ $(document).ready(function () {
       var initialPrice = item.price * item.quantity;
       var cardHtml = `
         <div id="cart-item-${index}" class="card p-4 cart-main">
-          <div class="row">
+          <div class="row card-menu">
             <div class="col-md-2 col-5 mx-auto bg-light d-flex justify-content-center cart-img align-items-center shadow product_img">
               <img src="../${item.imagePath}" class="img-fluid" alt="cart img">
             </div>
@@ -104,7 +104,7 @@ $(document).ready(function () {
               <div class="row">
                 <div class="col-6 card-title">
                   <h1 class="mb-4 product_name">${item.title}</h1>
-                  <p class="mb-2">QUANTITY: <span id="quantity-${index} +">${item.quantity}</span></p>
+                  <p class="mb-2">QUANTITY: <span id="quantity-${index} +" class="i-quantity">${item.quantity}</span></p>
                 </div>
                 <div class="col-6">
                   <ul class="pagination justify-content-end set_quantity">
@@ -127,10 +127,10 @@ $(document).ready(function () {
               <div class="row">
                 <div class="col-8 d-flex justify-content-between remove_wish">
                   <p><i class="fas fa-trash-alt remove-item-btn" data-index="${index}"></i> REMOVE ITEM</p>
-                  <p><i class="fas fa-heart"></i>MOVE TO WISH LIST</p>
+                  <p  class="remove" onClick="addToList()"><i class="fas fa-heart"></i>MOVE TO WISH LIST</p>
                 </div>
                 <div class="col-4 d-flex justify-content-end price_money">
-                  <h3>&#8377;<span id="itemval-${index}">${item.price}</span></h3>
+                  <h3>&#8377;<span id="itemval-${index}" class="i-price">${item.price}</span></h3>
                 </div>
               </div>
             </div>
@@ -143,6 +143,12 @@ $(document).ready(function () {
     calculateTotalPrice();
 
     $(".remove-item-btn").click(function () {
+      var index = $(this).data("index");
+      removeItemFromCart(index);
+      calculateTotalPrice(data.price);
+    });
+
+    $(".remove").click(function () {
       var index = $(this).data("index");
       removeItemFromCart(index);
       calculateTotalPrice(data.price);
@@ -241,3 +247,38 @@ $(document).ready(function () {
     });
   });
 });
+
+function addToList() {
+  // Get product details from the product card
+  const productDiv = $(event.target).closest(".card-menu");
+  const imagePath = productDiv.find("img").attr("src");
+  const title = productDiv.find(".product_name").text();
+  const quantity = productDiv.find(".i-quantity").text();
+  const price = parseFloat(productDiv.find(".i-price").text().replace("₹", ""));
+
+  // Construct item object
+  const item = {
+    imagePath: imagePath,
+    title: title,
+    price: price,
+    quantity: quantity,
+  };
+
+  // Send item data to the server
+  $.ajax({
+    url: "/saveToList", // Replace with the appropriate endpoint on your server
+    type: "POST",
+    data: JSON.stringify(item),
+    contentType: "application/json",
+    success: function (response) {
+      console.log("Item added to cart:", item);
+      alert(response);
+      // alert("Item added to cart successfully");
+      // Handle success response if needed
+    },
+    error: function (xhr, status, error) {
+      console.error("Error adding item to cart:", error);
+      // Handle error response if needed
+    },
+  });
+}

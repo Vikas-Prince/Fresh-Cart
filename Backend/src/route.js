@@ -30,6 +30,10 @@ router.get("/cartData", function (req, res) {
   res.sendFile(path.join(staticDir, "cart/cart.json"));
 });
 
+router.get("/wishlist", function (req, res) {
+  res.sendFile(path.join(staticDir, "wishlist/wishlist.html"));
+});
+
 router.get("/login", function (req, res) {
   res.sendFile(path.join(staticDir, "login/login.html"));
 });

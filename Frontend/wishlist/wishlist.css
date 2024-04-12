@@ -1,0 +1,18 @@
+.wishlist-section {
+  margin: 100px 5% !important;
+  background-color: #fff;
+}
+
+.product-section {
+  width: 100%;
+}
+
+.thumbnail {
+  border: 1px solid lightgray !important;
+  max-width: 300px;
+}
+
+#cart-left {
+  display: flex;
+  justify-content: space-between !important;
+}

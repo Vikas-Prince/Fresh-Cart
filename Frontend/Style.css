@@ -93,6 +93,19 @@
   .carousel-inner .item img {
     height: 300px;
   }
+
+  .location-search {
+    width: 50% !important;
+  }
+
+  .item-search {
+    width: 30% !important;
+  }
+
+  #location,
+  .item-search {
+    min-width: 50px !important;
+  }
 }
 
 @media (min-width: 769px) {
@@ -170,6 +183,13 @@ body {
   border-right: 1px solid var(--color);
 }
 
+#location {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding-right: 1%;
+}
+
 svg {
   cursor: pointer;
 }
@@ -185,6 +205,10 @@ svg {
 
 .items-search a {
   width: 100% !important;
+}
+
+.items-search svg {
+  margin-left: 1%;
 }
 
 .location-search input,

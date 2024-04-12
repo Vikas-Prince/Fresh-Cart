@@ -37,7 +37,7 @@
       integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="wishlist.css" />
     <link rel="stylesheet" href="Slick/slick.css" />
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
@@ -155,24 +155,28 @@
         <div class="offcanvas-body">
           <nav class="canvas-navbar">
             <ul class="nav-list" id="canvas-list">
-              <li class="nav-items"><a href="../farmer/farmer.html">Sell Your Crop</a></li>
-              <li class="nav-items"><a href="../wishlist/wishlist.html">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  class="bi bi-heart"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
-                  />
-                </svg>
-                WishList</a
-              ></li>
+              <li class="nav-items">
+                <a href="../farmer/farmer.html">Sell Your Crop</a>
+              </li>
               <li class="nav-items">
                 <a href="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-heart"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                    />
+                  </svg>
+                  WishList</a
+                >
+              </li>
+              <li class="nav-items">
+                <a href="#">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
@@ -216,24 +220,28 @@
       <!-----------------------------navbar Start--------------------------->
       <nav class="navbar nav">
         <ul class="nav-list">
-          <li class="nav-items"><a href="../farmer/farmer.html">Sell Your Crop</a></li>
-          <li class="nav-items bulk-order"><a href="../wishlist/wishlist.html">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="currentColor"
-              class="bi bi-heart"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
-              />
-            </svg>
-            WishList</a
-          ></li>
-          <li class="nav-items popup-li">
+          <li class="nav-items">
+            <a href="../farmer/farmer.html">Sell Your Crop</a>
+          </li>
+          <li class="nav-items bulk-order">
             <a href="">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="bi bi-heart"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"
+                />
+              </svg>
+              WishList</a
+            >
+          </li>
+          <li class="nav-items popup-li">
+            <a href="../cart/cart.html">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
@@ -248,7 +256,7 @@
               </svg>
               Cart</a
             >
-            <p class="popup"></p>
+            <!-- <p class="popup"></p> -->
           </li>
           <a href="signup.html">
             <li class="nav-items profile">
@@ -279,148 +287,11 @@
 
     <!---------------------------------- Body section Start----------------->
 
-    <section id="cart-section">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-10 col-11 mx-auto">
-            <div class="row mt-5 gx-3">
-              <!-- left side div -->
-              <div class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5 shadow" id="cart-left">
-                
-                
-                <section class="delivery-address display">
-                  <h2 class="title">Delivery Address</h2>
-                  <form action="/order" id="myForm" class="register-form" method="post">
-                      <div class="input-box">
-                        <input type="text" name="firstName" placeholder="First Name" required />
-                        <input type="text" name="LastName" placeholder="Last Name" required />
-                        <input type="text" name="mobileNumber" placeholder="Mobile Number" required />
-                      </div>
-            
-                      <div class="input-box">
-                        <select id="state" name="state" required>
-                          <option value="">Select your State</option>
-                          <option value="andhra">Andhra Pradesh</option>
-                        </select>
-                        <select id="district" name="district"  required>
-                          <option value="">-Select Your District-</option>
-                          <option value="">East Godavari</option>
-                          <option value="">West Godavari</option>
-                          <option value="">Visakhapatnam</option>
-                          <option value="">Vizayanagaram</option>
-                          <option value="">Kadapa</option>
-                          <option value="">Krishna</option>
-                          <option value="">Guntur</option>
-                          <option value="">Nellore</option>
-                          <option value="">Chithoor</option>
-                        </select>
-                        <input type="text" name="pincode" placeholder="Enter Your PinCode" required />
-                      </div>
-                      <textarea class ="input-box" name="address" id="address"rows="4" placeholder="Enter Your Complete Address" required></textarea>
-                      <div class="input-check">
-                        <div class="form-check">
-                          <input type="radio" name="home" id="check0" aria-selected/>
-                          <label for="check0">Home</label>
-                        </div>
-                        <div class="form-check">
-                          <input type="radio" name="Office" id="check1" />
-                          <label for="check1">Office</label>
-                        </div>
-                      </div>
-                      <button class="lgbtn delivery-btn" type="submit">Delivery Here</button>
-                      <div>
-                    </form>
-                </section>
-
-
-                <h3 class=" font-weight-bold" id="cart-heading"> </h3>
-              </div>
-              <!-- right side div -->
-              <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
-                <!-- Right side content -->
-                <div class="right_side p-3 shadow bg-white">
-                  <h2 class="product_name product-title mb-5">The Total Amount Of</h2>
-                  <div class="price_indiv d-flex justify-content-between">
-                    <p>Product amount</p>
-                    <p>&#8377<span id="product_total_amt"></span></p>
-                  </div>
-                  <div class="price_indiv d-flex justify-content-between">
-                    <p>Shipping Charge</p>
-                    <p>&#8377<span id="shipping_charge">50.0</span></p>
-                  </div>
-                  <hr />
-                  <div class="totalAmount">
-                    <p>The total amount of</p>
-                    <p>&#8377<span id="total_cart_amt"></span></p>
-                  </div>
-                  <button class="btn btn-success text-uppercase">
-                    Checkout
-                  </button>
-                </div>
-                <!-- discount code part -->
-                <div class="discount_code mt-3 shadow">
-                  <div class="card">
-                    <div class="card-body">
-                      <a
-                        class="d-flex justify-content-between"
-                        data-toggle="collapse"
-                        href="#collapseExample"
-                        aria-expanded="false"
-                        aria-controls="collapseExample"
-                      >
-                        Add a discount code
-                        <span><i class="fas fa-chevron-down pt-1"></i></span>
-                      </a>
-                      <div class="collapse" id="collapseExample">
-                        <div class="mt-3">
-                          <input
-                            type="text"
-                            name=""
-                            id="discount_code1"
-                            class="form-control "
-                            placeholder="Enter the discount code"
-                          />
-                          <small id="error_trw" class="text-dark mt-3"
-                            ></small
-                          >
-                        </div>
-                        <button
-                          class="btn btn-success btn-sm mt-3"
-                          onclick="discount_code()"
-                        >
-                          Apply
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- discount code ends -->
-                <div class="mt-3 shadow p-3 bg-white">
-                  <div class="pt-4">
-                    <h5 class="mb-4">Expected delivery date</h5>
-                    <p class="delivery-date"></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section id="responseContainer">
-      <center>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd2hmdDh5MjBpaTYwOHNoMHd5aHB3OGFkazlnMnNkdG12Nm15cTN5dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tf9jjMcO77YzV4YPwE/giphy.gif" alt="">
-        <h3>Thank You For Orderd in Fresh Cart!!</h3>
-        <span>Expected delivery date</span><h5 class="delivery-date"> </h5>
-        <a href="../home.html"><button class="hm-btn" data-bs-target="" type="button">Home</button></a>
-      </center>
-    </section>
-
-
-
+    <article class="wishlist-section">
+      <article class="product-section">
+        <div class="products row" id="cart-left"></div>
+      </article>
+    </article>
 
     <!---------------------------------- Body section End---------------->
 
@@ -562,6 +433,6 @@
     <script src="Slick/slick.min.js"></script>
     <script src="productPage.js"></script>
     <script src="jQuery.js"></script>
-    <script src="cart.js"></script>
+    <script src="wishlist.js"></script>
   </body>
 </html>

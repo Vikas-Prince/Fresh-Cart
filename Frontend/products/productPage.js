@@ -496,7 +496,7 @@ function createVegProduct(item) {
 
   vegItem.append(
     $(
-      '<div class="cart-wishlist"> <center> <button onClick="addToCart()" class="cart-btn"> <svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16" > <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5" /></svg> Add to Cart </button>    <button class="wishlist-btn"> <svg        xmlns="http://www.w3.org/2000/svg" width="16"        height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" > <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" /> </svg> Wishlist </button> </center> </div>'
+      '<div class="cart-wishlist"> <center> <button onClick="addToCart()" class="cart-btn"> <svg xmlns="http://www.w3.org/2000/svg"  width="16"  height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16" > <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9zM1 7v1h14V7zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5m2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5" /></svg> Add to Cart </button>    <button class="wishlist-btn" onClick="addToList()"> <svg        xmlns="http://www.w3.org/2000/svg" width="16"        height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16" > <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" /> </svg> Wishlist </button> </center> </div>'
     )
   );
 
@@ -592,6 +592,41 @@ function addToCart() {
   // Send item data to the server
   $.ajax({
     url: "/saveToCart", // Replace with the appropriate endpoint on your server
+    type: "POST",
+    data: JSON.stringify(item),
+    contentType: "application/json",
+    success: function (response) {
+      console.log("Item added to cart:", item);
+      alert(response);
+      // alert("Item added to cart successfully");
+      // Handle success response if needed
+    },
+    error: function (xhr, status, error) {
+      console.error("Error adding item to cart:", error);
+      // Handle error response if needed
+    },
+  });
+}
+
+function addToList() {
+  // Get product details from the product card
+  const productDiv = $(event.target).closest(".thumbnail");
+  const imagePath = productDiv.find("img").attr("src");
+  const title = productDiv.find(".title").text();
+  const quantity = productDiv.find("small").text();
+  const price = parseFloat(productDiv.find(".price").text().replace("₹", ""));
+
+  // Construct item object
+  const item = {
+    imagePath: imagePath,
+    title: title,
+    price: price,
+    quantity: quantity,
+  };
+
+  // Send item data to the server
+  $.ajax({
+    url: "/saveToList", // Replace with the appropriate endpoint on your server
     type: "POST",
     data: JSON.stringify(item),
     contentType: "application/json",

@@ -5,9 +5,12 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 
-const cartFilePath = path.join(__dirname, "../../frontend/cart/cart.json");
+const cartFilePath = path.join(
+  __dirname,
+  "../../frontend/wishlist/wishlist.json"
+);
 
-app.post("/saveToCart", (req, res) => {
+app.post("/saveToList", (req, res) => {
   const newItem = req.body;
 
   fs.access(cartFilePath, fs.constants.F_OK, (err) => {
@@ -53,14 +56,14 @@ app.post("/saveToCart", (req, res) => {
           }
 
           // Return a success response
-          res.send("Item added to cart");
+          res.send("Item added to wishList");
         });
       });
     }
   });
 });
 
-app.post("/removeFromCart", (req, res) => {
+app.post("/removeFromList", (req, res) => {
   const indexToRemove = req.body.index;
   // Read cart data from cart.json
   fs.readFile(cartFilePath, "utf8", (err, data) => {

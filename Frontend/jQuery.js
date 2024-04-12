@@ -115,11 +115,15 @@ const grains = [
 function createVegItems(items) {
   const vegItems = $('<div class="thumbnail"></div>');
   vegItems.append(
-    $('<a href="#"> <img src="' + items.imagePath + '" alt="" /></a>')
+    $(
+      '<a href="products/productPage.html"> <img src="' +
+        items.imagePath +
+        '" alt="" /></a>'
+    )
   );
   vegItems.append(
     $(
-      '<a href="#"><div class="caption"> <p>' +
+      '<a href="products/productPage.html"><div class="caption"> <p>' +
         items.title +
         ' </p> <small class="price"> ' +
         items.price +
@@ -137,10 +141,16 @@ $.each(items, function (index, item) {
 
 function createFruitItems(item) {
   const fruitItems = $("<div class=thumbnail></div>");
-  fruitItems.append($('<a href="#"> <img src="' + item.imagePath + '"></a>'));
   fruitItems.append(
     $(
-      '<a href="#"> <div class="caption"> <p>' +
+      '<a href="products/productPage.html"> <img src="' +
+        item.imagePath +
+        '"></a>'
+    )
+  );
+  fruitItems.append(
+    $(
+      '<a href="products/productPage.html"> <div class="caption"> <p>' +
         item.title +
         '</p> <small class="price">' +
         item.price +
@@ -158,10 +168,16 @@ $.each(fruits, function (index, fruit) {
 
 function createGrainItems(item) {
   const grainItems = $("<div class=thumbnail></div>");
-  grainItems.append($('<a href="#"> <img src="' + item.imagePath + '"></a>'));
   grainItems.append(
     $(
-      '<a href="#"> <div class="caption"> <p>' +
+      '<a href="products/productPage.html"> <img src="' +
+        item.imagePath +
+        '"></a>'
+    )
+  );
+  grainItems.append(
+    $(
+      '<a href="products/productPage.html"> <div class="caption"> <p>' +
         item.title +
         '</p> <small class="price">' +
         item.price +

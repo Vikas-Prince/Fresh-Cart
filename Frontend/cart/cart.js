@@ -1,100 +1,110 @@
 $(document).ready(function () {
-  $.getJSON("cart.json", function (data) {
-    if (!Array.isArray(data)) {
-      console.error("Data is not an array:", data);
-      return;
-    }
+  $.ajax({
+    url: "/getCartItems",
+    type: "GET",
+    success: function (data) {
+      if (!Array.isArray(data)) {
+        console.error("Data is not an array:", data);
+        return;
+      }
 
-    function removeItemFromCart(index) {
-      // Send AJAX request to remove the item from the server and update the cart
-      $.ajax({
-        url: "/removeFromCart", // Endpoint to handle removing item from the cart
-        type: "POST",
-        data: { index: index },
-        success: function (response) {
-          if (response.success) {
-            // Remove the item from the DOM
-            $("#cart-item-" + index).remove();
-            // Update cart total
-            updateCartTotal();
-            calculateTotalPrice();
-          } else {
-            console.error("Failed to remove item:", response.error);
-          }
-        },
-        error: function (xhr, status, error) {
-          console.error("Error removing item:", error);
-        },
-      });
-    }
+      if (data.length === 0) {
+        $("#cart-left").html("<p>No items in wishlist </p>");
+        return;
+      }
 
-    function updateCartTotal() {
-      var totalItems = $(".cart-main").length;
-      $(".font-weight-bold").text("Cart (" + totalItems + " items)");
-      $(".popup").text(totalItems);
-    }
-
-    function calculateTotalPrice() {
-      var totalPrice = 0;
-      data.forEach(function (item) {
-        totalPrice += item.price;
-        return totalPrice;
-      });
-
-      if (Array.isArray(data) && data.length > 0) {
-        data.forEach(function (item) {
-          if (
-            typeof item.price === "number" &&
-            typeof item.quantity === "number"
-          ) {
-            totalPrice += item.price * item.quantity;
-          }
+      function removeItemFromCart(index) {
+        $.ajax({
+          url: "/removeFromCart",
+          type: "POST",
+          data: { index: index }, // Sending the index of the item to be removed
+          success: function (response) {
+            // If the removal was successful, remove the item from the UI
+            if (response.success) {
+              $("#cart-item-" + index).remove(); // Remove the HTML element of the item
+              updateCartTotal(); // Update the total number of items in the cart
+              calculateTotalPrice(); // Recalculate the total price
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error("Error removing item from cart:", error);
+          },
         });
       }
 
-      $("#product_total_amt").text(totalPrice.toFixed(2));
-      if (totalPrice > 50) {
-        var shippingCharge = 50.0;
-        $("#total_cart_amt").text((totalPrice + shippingCharge).toFixed(2));
-      } else {
-        $("#total_cart_amt").text(0.0);
+      // Event handler for clicking on the remove item button
+      $(document).on("click", ".remove-item-btn", function () {
+        var index = $(this).data("index");
+        removeItemFromCart(index);
+      });
+
+      function updateCartTotal() {
+        var totalItems = $(".cart-main").length;
+        $(".font-weight-bold").text("Cart (" + totalItems + " items)");
+        $(".popup").text(totalItems);
       }
-    }
 
-    function updateItemTotal(index, newQuantity) {
-      data[index].quantity = newQuantity;
-      var itemPrice = data[index].price * newQuantity;
-      $("#itemval-" + index).text(itemPrice.toFixed(2));
-      $("#product_total_amt").text(itemPrice.toFixed(2));
+      function calculateTotalPrice() {
+        var totalPrice = 0;
+        data.forEach(function (item) {
+          totalPrice += item.price;
+          return totalPrice;
+        });
 
-      calculateTotalPrice();
-    }
+        if (Array.isArray(data) && data.length > 0) {
+          data.forEach(function (item) {
+            if (
+              typeof item.price === "number" &&
+              typeof item.quantity === "number"
+            ) {
+              totalPrice += item.price * item.quantity;
+            }
+          });
+        }
 
-    function decreaseNumber(textboxId) {
-      var currentValue = parseInt($("#" + textboxId).val());
-      if (currentValue > 1) {
-        $("#" + textboxId).val(currentValue - 1);
-        return currentValue - 1;
+        $("#product_total_amt").text(totalPrice.toFixed(2));
+        if (totalPrice > 50) {
+          var shippingCharge = 50.0;
+          $("#total_cart_amt").text((totalPrice + shippingCharge).toFixed(2));
+        } else {
+          $("#total_cart_amt").text(0.0);
+        }
       }
-      return 1;
-    }
 
-    function increaseNumber(textboxId) {
-      var currentValue = parseInt($("#" + textboxId).val());
-      if (currentValue < 5) {
-        $("#" + textboxId).val(currentValue + 1);
-        return currentValue + 1;
+      function updateItemTotal(index, newQuantity) {
+        data[index].quantity = newQuantity;
+        var itemPrice = data[index].price * newQuantity;
+        $("#itemval-" + index).text(itemPrice.toFixed(2));
+        $("#product_total_amt").text(itemPrice.toFixed(2));
+
+        calculateTotalPrice();
       }
-      return 5;
-    }
 
-    var totalItems = data.length;
-    $(".font-weight-bold").text("Cart (" + totalItems + " items)");
-    $(".popup").text(totalItems);
+      function decreaseNumber(textboxId) {
+        var currentValue = parseInt($("#" + textboxId).val());
+        if (currentValue > 1) {
+          $("#" + textboxId).val(currentValue - 1);
+          return currentValue - 1;
+        }
+        return 1;
+      }
 
-    $.each(data, function (index, item) {
-      var initialPrice = item.price * item.quantity;
-      var cardHtml = `
+      function increaseNumber(textboxId) {
+        var currentValue = parseInt($("#" + textboxId).val());
+        if (currentValue < 5) {
+          $("#" + textboxId).val(currentValue + 1);
+          return currentValue + 1;
+        }
+        return 5;
+      }
+
+      var totalItems = data.length;
+      $(".font-weight-bold").text("Cart (" + totalItems + " items)");
+      $(".popup").text(totalItems);
+
+      $.each(data, function (index, item) {
+        var initialPrice = item.price * item.quantity;
+        var cardHtml = `
         <div id="cart-item-${index}" class="card p-4 cart-main">
           <div class="row card-menu">
             <div class="col-md-2 col-5 mx-auto bg-light d-flex justify-content-center cart-img align-items-center shadow product_img">
@@ -137,39 +147,43 @@ $(document).ready(function () {
           </div>
         </div>
       `;
-      $("#cart-left").append(cardHtml);
-    });
+        $("#cart-left").append(cardHtml);
+      });
 
-    calculateTotalPrice();
+      calculateTotalPrice();
 
-    $(".remove-item-btn").click(function () {
-      var index = $(this).data("index");
-      removeItemFromCart(index);
-      calculateTotalPrice(data.price);
-    });
+      // $(".remove-item-btn").click(function () {
+      //   var index = $(this).data("index");
+      //   removeFromList(index);
+      //   calculateTotalPrice(data.price);
+      // });
 
-    $(".remove").click(function () {
-      var index = $(this).data("index");
-      removeItemFromCart(index);
-      calculateTotalPrice(data.price);
-    });
+      // $(".remove").click(function () {
+      //   var index = $(this).data("index");
+      //   removeItemFromCart(index);
+      //   calculateTotalPrice(data.price);
+      // });
 
-    window.updateQuantity = function (index, action) {
-      var currentValue = parseInt($("#textbox-" + index).val());
-      var newValue;
-      if (action === "increase") {
-        newValue = increaseNumber("textbox-" + index);
-      } else {
-        newValue = decreaseNumber("textbox-" + index);
-      }
-      updateItemTotal(index, newValue);
-      $("#" + index).text(newValue);
+      window.updateQuantity = function (index, action) {
+        var currentValue = parseInt($("#textbox-" + index).val());
+        var newValue;
+        if (action === "increase") {
+          newValue = increaseNumber("textbox-" + index);
+        } else {
+          newValue = decreaseNumber("textbox-" + index);
+        }
+        updateItemTotal(index, newValue);
+        $("#" + index).text(newValue);
 
-      // Call the function to recalculate the total price whenever quantity changes
-      calculateTotalPrice(data.price);
-    };
+        // Call the function to recalculate the total price whenever quantity changes
+        calculateTotalPrice(data.price);
+      };
 
-    calculateTotalPrice();
+      calculateTotalPrice();
+    },
+    error: function (xhr, status, error) {
+      console.error("Error fetching wishlist items:", error);
+    },
   });
 });
 

@@ -1,95 +1,63 @@
 const express = require("express");
-const fs = require("fs");
-const path = require("path");
+const bodyParser = require("body-parser");
+const cartItem = require("../models/cartData.js");
+require("../public/db.js");
 
 const app = express();
-app.use(express.json());
 
-const cartFilePath = path.join(__dirname, "../../frontend/cart/cart.json");
+app.use(bodyParser.json());
 
-app.post("/saveToCart", (req, res) => {
+app.get("/getCartItems", async (req, res) => {
+  try {
+    const cartItems = await cartItem.find();
+
+    // Send the wishlist items as JSON response
+    res.json(cartItems);
+  } catch (err) {
+    console.error("Error fetching wishlist items:", err);
+    // Send an error response if there's an error
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.post("/saveToCart", async (req, res) => {
   const newItem = req.body;
 
-  fs.access(cartFilePath, fs.constants.F_OK, (err) => {
-    if (err) {
-      const initialData = [newItem];
-      fs.writeFile(cartFilePath, JSON.stringify(initialData), (err) => {
-        if (err) {
-          console.error("Error creating cart file:", err);
-          return res.status(500).json({ error: "Internal server error" });
-        }
-
-        res.json({ message: "Item added to cart" });
-      });
-    } else {
-      // If the file exists, read the existing data
-      fs.readFile(cartFilePath, "utf8", (err, data) => {
-        if (err) {
-          console.error("Error reading cart data:", err);
-          return res.status(500).json({ error: "Internal server error" });
-        }
-
-        let cartItems = [];
-        if (data) {
-          cartItems = JSON.parse(data);
-        }
-
-        // Check if an item with the same title already exists in the cart
-        const existingItemIndex = cartItems.findIndex(
-          (item) => item.title === newItem.title
-        );
-        if (existingItemIndex !== -1) {
-          return res.send("Item with the same title already exists");
-        }
-
-        // Add the new item to the cart
-        cartItems.push(newItem);
-
-        // Write the updated cart data back to the JSON file
-        fs.writeFile(cartFilePath, JSON.stringify(cartItems), (err) => {
-          if (err) {
-            console.error("Error writing cart data:", err);
-            return res.status(500).json({ error: "Internal server error" });
-          }
-
-          // Return a success response
-          res.send("Item added to cart");
-        });
-      });
+  try {
+    // Check if an item with the same title already exists in the wishlist
+    const existingItem = await cartItem.findOne({ title: newItem.title });
+    if (existingItem) {
+      // console.log("Item already exists in the cart:", existingItem);
+      return res.status(200).send("Item with the same title already exists");
     }
-  });
+
+    // Create a new wishlist item and save it to the database
+    await cartItem.create(newItem);
+    res.send("Item added to Cart");
+  } catch (err) {
+    console.error("Error while adding item to cart:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
 });
 
-app.post("/removeFromCart", (req, res) => {
-  const indexToRemove = req.body.index;
-  // Read cart data from cart.json
-  fs.readFile(cartFilePath, "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({ success: false, error: "Internal Server Error" });
-      return;
+app.post("/removeFromCart", async (req, res) => {
+  const index = req.body.index;
+
+  try {
+    // Find the cart item by its index and remove it from the database
+    const removedItem = await cartItem.findOneAndDelete({
+      /* Add your query condition here */
+    });
+
+    if (!removedItem) {
+      return res.status(404).json({ success: false, error: "Item not found" });
     }
 
-    let cartData = JSON.parse(data);
-    if (indexToRemove >= 0 && indexToRemove < cartData.length) {
-      // Remove item from cart data
-      cartData.splice(indexToRemove, 1);
-      // Write updated cart data back to cart.json
-      fs.writeFile(cartFilePath, JSON.stringify(cartData), (err) => {
-        if (err) {
-          console.error(err);
-          res
-            .status(500)
-            .json({ success: false, error: "Internal Server Error" });
-          return;
-        }
-        res.json({ success: true });
-      });
-    } else {
-      res.status(400).json({ success: false, error: "Invalid index" });
-    }
-  });
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Error removing item from cart:", err);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
 });
 
-// Start the server
 module.exports = app;

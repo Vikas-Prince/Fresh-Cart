@@ -9,7 +9,7 @@ $(document).ready(function () {
       }
 
       if (data.length === 0) {
-        $("#cart-left").html("<p>No items in wishlist </p>");
+        $("#cart-left").html("<center><h2>No items in wishlist😪😪 </h2> </center>");
         return;
       }
 
@@ -54,6 +54,8 @@ function removeFromList(itemId) {
     success: function (response) {
       if (response.success) {
         $("#" + itemId).remove();
+        $("#responseMessage").text(response.message);
+        $(".toast").toast("show");
       } else {
         console.error("Error removing item from wishlist.");
       }
@@ -90,7 +92,8 @@ function addToCart() {
     contentType: "application/json",
     success: function (response) {
       console.log("Item added to cart:", item);
-      alert(response);
+      $("#responseMessage").text(response);
+      $(".toast").toast("show");
     },
     error: function (xhr, status, error) {
       console.error("Error adding item to cart:", error);

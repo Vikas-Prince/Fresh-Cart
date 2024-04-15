@@ -9,7 +9,11 @@ $(document).ready(function () {
       }
 
       if (data.length === 0) {
-        $("#cart-left").html("<p>No items in wishlist </p>");
+        $("#cart-left").html(
+          "<center ><h2>No items in cart Add it first 😒😒</h2><center>"
+        );
+
+        $(".cart-right").hide();
         return;
       }
 
@@ -17,13 +21,15 @@ $(document).ready(function () {
         $.ajax({
           url: "/removeFromCart",
           type: "POST",
-          data: { index: index }, // Sending the index of the item to be removed
+          data: { index: index },
           success: function (response) {
             // If the removal was successful, remove the item from the UI
             if (response.success) {
               $("#cart-item-" + index).remove(); // Remove the HTML element of the item
               updateCartTotal(); // Update the total number of items in the cart
               calculateTotalPrice(); // Recalculate the total price
+              $("#responseMessage").text(response.message);
+              $(".toast").toast("show");
             }
           },
           error: function (xhr, status, error) {
@@ -152,18 +158,6 @@ $(document).ready(function () {
 
       calculateTotalPrice();
 
-      // $(".remove-item-btn").click(function () {
-      //   var index = $(this).data("index");
-      //   removeFromList(index);
-      //   calculateTotalPrice(data.price);
-      // });
-
-      // $(".remove").click(function () {
-      //   var index = $(this).data("index");
-      //   removeItemFromCart(index);
-      //   calculateTotalPrice(data.price);
-      // });
-
       window.updateQuantity = function (index, action) {
         var currentValue = parseInt($("#textbox-" + index).val());
         var newValue;
@@ -175,7 +169,6 @@ $(document).ready(function () {
         updateItemTotal(index, newValue);
         $("#" + index).text(newValue);
 
-        // Call the function to recalculate the total price whenever quantity changes
         calculateTotalPrice(data.price);
       };
 
@@ -252,8 +245,8 @@ $(document).ready(function () {
       url: "/order",
       data: formData,
       success: function (response) {
-        $("#cart-section").hide();
-        $("#responseContainer").show();
+        $("#responseMessage").text(response);
+        $(".toast").toast("show");
       },
       error: function (xhr, status, error) {
         console.error("There was a problem with the AJAX request:", error);
@@ -263,14 +256,12 @@ $(document).ready(function () {
 });
 
 function addToList() {
-  // Get product details from the product card
   const productDiv = $(event.target).closest(".card-menu");
   const imagePath = productDiv.find("img").attr("src");
   const title = productDiv.find(".product_name").text();
   const quantity = productDiv.find(".i-quantity").text();
   const price = parseFloat(productDiv.find(".i-price").text().replace("₹", ""));
 
-  // Construct item object
   const item = {
     imagePath: imagePath,
     title: title,
@@ -278,15 +269,15 @@ function addToList() {
     quantity: quantity,
   };
 
-  // Send item data to the server
   $.ajax({
-    url: "/saveToList", // Replace with the appropriate endpoint on your server
+    url: "/saveToList",
     type: "POST",
     data: JSON.stringify(item),
     contentType: "application/json",
     success: function (response) {
       console.log("Item added to cart:", item);
-      alert(response);
+      $("#responseMessage").text(response);
+      $(".toast").toast("show");
       // alert("Item added to cart successfully");
       // Handle success response if needed
     },

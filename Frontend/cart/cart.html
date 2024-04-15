@@ -250,7 +250,7 @@
             >
             <p class="popup"></p>
           </li>
-          <a href="signup.html">
+          <a href="">
             <li class="nav-items profile">
               <button data-bs-toggle="modal" data-bs-target="#myModal">
                 <svg
@@ -336,7 +336,7 @@
                 <h3 class=" font-weight-bold" id="cart-heading"> </h3>
               </div>
               <!-- right side div -->
-              <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
+              <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5 cart-right">
                 <!-- Right side content -->
                 <div class="right_side p-3 shadow bg-white">
                   <h2 class="product_name product-title mb-5">The Total Amount Of</h2>
@@ -408,7 +408,15 @@
       </div>
     </section>
 
-
+    <div class="toast-container">
+      <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+        <div class="toast-header">
+          <strong class="me-auto">Response</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body" id="responseMessage"></div>
+      </div>
+    </div>
 
     <section id="responseContainer">
       <center>

@@ -27,7 +27,7 @@ app.post("/saveToList", async (req, res) => {
     // Check if an item with the same title already exists in the wishlist
     const existingItem = await WishlistItem.findOne({ title: newItem.title });
     if (existingItem) {
-      return res.status(200).send("Item with the same title already exists");
+      return res.status(200).send("Item already exists");
     }
 
     // Create a new wishlist item and save it to the database
@@ -47,7 +47,7 @@ app.post("/saveToCart", async (req, res) => {
     // Check if an item with the same title already exists in the wishlist
     const existingItem = await WishlistItem.findOne({ title: newItem.title });
     if (existingItem) {
-      return res.status(400).send("Item with the same title already exists");
+      return res.status(400).send("Item already exists");
     }
 
     // Create a new wishlist item and save it to the database
@@ -71,7 +71,7 @@ app.post("/removeFromList", async (req, res) => {
       return res.status(404).json({ success: false, error: "Item not found" });
     }
 
-    res.json({ success: true });
+    res.json({ success: true, message: "Item removed from Wishlist" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, error: "Internal Server Error" });

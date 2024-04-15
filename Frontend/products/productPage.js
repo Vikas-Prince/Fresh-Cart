@@ -503,6 +503,11 @@ function createVegProduct(item) {
   $(".products").append(vegItem);
 }
 
+$("#searchInput").on("input", function () {
+  const keyword = $(this).val().trim();
+  displayFilteredProducts(keyword);
+});
+
 function displayFilteredProducts(keyword) {
   $(".products").empty();
   const filteredItems = items.filter((item) =>
@@ -513,7 +518,7 @@ function displayFilteredProducts(keyword) {
     filteredItems.forEach((item) => createVegProduct(item));
   } else {
     $(".products").html(
-      " <center><h3>Sorry No products are found 😕 </h3> </center>"
+      "<center><h3>Sorry No products are found 😕 </h3></center>"
     );
   }
 }
@@ -561,10 +566,10 @@ $.each(items, function (index, items) {
   itemList.append(createVegProduct(items));
 });
 
-$("#searchInput").on("input", function () {
-  const keyword = $(this).val().trim();
-  displayFilteredProducts(keyword);
-});
+// $("#searchInput").on("input", function () {
+//   const keyword = $(this).val().trim();
+//   displayFilteredProducts(keyword);
+// });
 
 // add to cart
 
@@ -597,9 +602,9 @@ function addToCart() {
     contentType: "application/json",
     success: function (response) {
       console.log("Item added to cart:", item);
+      $("#responseMessage").text(response);
+      $(".toast").toast("show");
       alert(response);
-      // alert("Item added to cart successfully");
-      // Handle success response if needed
     },
     error: function (xhr, status, error) {
       console.error("Error adding item to cart:", error);
@@ -632,9 +637,9 @@ function addToList() {
     contentType: "application/json",
     success: function (response) {
       console.log("Item added to cart:", item);
+      $("#responseMessage").text(response);
+      $(".toast").toast("show");
       alert(response);
-      // alert("Item added to cart successfully");
-      // Handle success response if needed
     },
     error: function (xhr, status, error) {
       console.error("Error adding item to cart:", error);

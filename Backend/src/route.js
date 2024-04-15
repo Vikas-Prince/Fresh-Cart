@@ -4,9 +4,7 @@ const path = require("path");
 const router = express.Router();
 
 const staticDir = path.join(__dirname, "../../frontend");
-// const farmerPath = path.join(__dirname, "../../frontend/farmer");
 const cartPath = path.join(__dirname, "../../frontend/cart");
-// const staticDir = path.join(__dirname, "../../frontend/src");
 
 router.get("/", function (req, res) {
   res.sendFile(path.join(staticDir, "Index.html"));
@@ -41,8 +39,6 @@ router.get("/login", function (req, res) {
 router.get("/register", function (req, res) {
   res.sendFile(path.join(staticDir, "login/signup.html"));
 });
-
-// router.use(express.static(staticDir));
 
 router.get("/farmer", function (req, res) {
   res.sendFile(path.join(staticDir, "farmer/farmer.html"));

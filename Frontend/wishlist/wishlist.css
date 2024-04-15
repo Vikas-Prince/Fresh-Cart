@@ -16,3 +16,8 @@
   display: flex;
   justify-content: space-between !important;
 }
+
+center h2 {
+  font-size: 25px;
+  font-weight: 500;
+}

@@ -40,7 +40,7 @@ app.post("/register", async (req, res) => {
     // Check if user already exists
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
-      return res.status(400).send("Email already registered");
+      return res.status(200).send("Email already registered");
     }
 
     // Create new user
@@ -66,7 +66,7 @@ app.post("/login", async (req, res) => {
     // Find user by email
     const user = await User.findOne({ email: email });
     if (!user) {
-      return res.status(404).send("User not found. Please register.");
+      return res.status(200).send("User not found. Please register.");
     }
 
     // Compare passwords
@@ -74,7 +74,7 @@ app.post("/login", async (req, res) => {
     if (passwordMatch) {
       return res.redirect(`/home?username=${user.username}`);
     } else {
-      return res.status(401).send("Incorrect password");
+      return res.status(200).send("Incorrect password");
     }
   } catch (err) {
     console.error(err);

@@ -116,7 +116,7 @@ function createVegItems(items) {
   const vegItems = $('<div class="thumbnail"></div>');
   vegItems.append(
     $(
-      '<a href="products/productPage.html"> <img src="' +
+      '<a href="login/signup.html"> <img src="' +
         items.imagePath +
         '" alt="" /></a>'
     )
@@ -246,4 +246,23 @@ $(document).ready(function () {
   $(".bulk-order").on("mouseenter", function () {
     $(this).tooltip();
   });
+});
+
+function fetchUsername() {
+  $.ajax({
+    url: "/get-username/:email", 
+    method: "GET",
+    dataType: "json",
+    success: function (data) {
+      $("#username").text(`${data.username}`);
+      console.log(data);
+    },
+    error: function (xhr, status, error) {
+      console.error("Error fetching username:", error);
+    },
+  });
+}
+
+$(document).ready(function () {
+  fetchUsername();
 });

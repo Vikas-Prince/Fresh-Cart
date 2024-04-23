@@ -9,7 +9,9 @@ $(document).ready(function () {
       }
 
       if (data.length === 0) {
-        $("#cart-left").html("<center><h2>No items in wishlist😪😪 </h2> </center>");
+        $("#cart-left").html(
+          "<center><h2>No items in wishlist😪😪 </h2> </center>"
+        );
         return;
       }
 
@@ -86,7 +88,7 @@ function addToCart() {
   };
 
   $.ajax({
-    url: "/saveToCart", // Replace with the appropriate endpoint on your server
+    url: "/saveToCart",
     type: "POST",
     data: JSON.stringify(item),
     contentType: "application/json",
@@ -97,7 +99,6 @@ function addToCart() {
     },
     error: function (xhr, status, error) {
       console.error("Error adding item to cart:", error);
-      // Handle error response if needed
     },
   });
 }

@@ -12,7 +12,7 @@ $(document).ready(function () {
         if (response === "success") {
           window.location.href = "/home";
         } else {
-          $("#response").text(response).show();
+          $("#response").text(response);
         }
       },
       error: function (xhr, status, error) {
@@ -33,7 +33,7 @@ $(document).ready(function () {
         if (response === "success") {
           window.location.href = "/home";
         } else {
-          $("#lg-response").text(response).show();
+          $("#lg-response").text(response);
         }
       },
       error: function (xhr, status, error) {

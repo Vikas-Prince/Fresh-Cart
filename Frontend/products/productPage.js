@@ -1,6 +1,6 @@
 const items = [
   {
-    imagePath: "../Images/fruits/f1.png",
+    imagePath: "../Images/Fruits/f1.png",
     title: "Banana",
     price: 30,
     rating: 4.4,

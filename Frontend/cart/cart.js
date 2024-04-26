@@ -38,7 +38,6 @@ $(document).ready(function () {
         });
       }
 
-      // Event handler for clicking on the remove item button
       $(document).on("click", ".remove-item-btn", function () {
         var index = $(this).data("index");
         removeItemFromCart(index);
@@ -278,12 +277,9 @@ function addToList() {
       console.log("Item added to cart:", item);
       $("#responseMessage").text(response);
       $(".toast").toast("show");
-      // alert("Item added to cart successfully");
-      // Handle success response if needed
     },
     error: function (xhr, status, error) {
       console.error("Error adding item to cart:", error);
-      // Handle error response if needed
     },
   });
 }

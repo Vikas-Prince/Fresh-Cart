@@ -15,9 +15,6 @@ app.use(express.static(staticDir));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Connect to MongoDB (replace 'your_connection_url' with your actual MongoDB connection URL)
-
-// Define a route to handle user registration
 app.post("/register", async (req, res) => {
   const { username, email, password, confirm_password } = req.body;
 
@@ -26,7 +23,7 @@ app.post("/register", async (req, res) => {
   }
 
   if (password !== confirm_password) {
-    return res.status(400).send("Passwords do not match");
+    return res.status(401).send("Passwords do not match");
   }
 
   try {
@@ -37,13 +34,11 @@ app.post("/register", async (req, res) => {
       password: hashedPassword,
     };
 
-    // Check if user already exists
     const existingUser = await User.findOne({ email: email });
     if (existingUser) {
-      return res.status(200).send("Email already registered");
+      return res.status(400).send("Email already registered");
     }
 
-    // Create new user
     const newUser = new User(userData);
     await newUser.save();
 
@@ -54,7 +49,6 @@ app.post("/register", async (req, res) => {
   }
 });
 
-// Define a route to handle user login
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -63,18 +57,15 @@ app.post("/login", async (req, res) => {
   }
 
   try {
-    // Find user by email
     const user = await User.findOne({ email: email });
     if (!user) {
-      return res.status(200).send("User not found. Please register.");
+      return res.status(404).send("User not found. Please register.");
     }
-
-    // Compare passwords
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (passwordMatch) {
       return res.redirect(`/home?username=${user.username}`);
     } else {
-      return res.status(200).send("Incorrect password");
+      return res.status(401).send("Incorrect password");
     }
   } catch (err) {
     console.error(err);

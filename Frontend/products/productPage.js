@@ -579,14 +579,12 @@ $(".cart-click").on("click", function () {
 });
 
 function addToCart() {
-  // Get product details from the product card
   const productDiv = $(event.target).closest(".thumbnail");
   const imagePath = productDiv.find("img").attr("src");
   const title = productDiv.find(".title").text();
   const quantity = productDiv.find("small").text();
   const price = parseFloat(productDiv.find(".price").text().replace("₹", ""));
 
-  // Construct item object
   const item = {
     imagePath: imagePath,
     title: title,
@@ -594,9 +592,8 @@ function addToCart() {
     quantity: quantity,
   };
 
-  // Send item data to the server
   $.ajax({
-    url: "/saveToCart", // Replace with the appropriate endpoint on your server
+    url: "/saveToCart",
     type: "POST",
     data: JSON.stringify(item),
     contentType: "application/json",
@@ -608,20 +605,17 @@ function addToCart() {
     },
     error: function (xhr, status, error) {
       console.error("Error adding item to cart:", error);
-      // Handle error response if needed
     },
   });
 }
 
 function addToList() {
-  // Get product details from the product card
   const productDiv = $(event.target).closest(".thumbnail");
   const imagePath = productDiv.find("img").attr("src");
   const title = productDiv.find(".title").text();
   const quantity = productDiv.find("small").text();
   const price = parseFloat(productDiv.find(".price").text().replace("₹", ""));
 
-  // Construct item object
   const item = {
     imagePath: imagePath,
     title: title,
@@ -629,9 +623,8 @@ function addToList() {
     quantity: quantity,
   };
 
-  // Send item data to the server
   $.ajax({
-    url: "/saveToList", // Replace with the appropriate endpoint on your server
+    url: "/saveToList",
     type: "POST",
     data: JSON.stringify(item),
     contentType: "application/json",
@@ -643,7 +636,6 @@ function addToList() {
     },
     error: function (xhr, status, error) {
       console.error("Error adding item to cart:", error);
-      // Handle error response if needed
     },
   });
 }

@@ -17,6 +17,13 @@ $(document).ready(function () {
       },
       error: function (xhr, status, error) {
         console.error("There was a problem with the AJAX request:", error);
+        if (xhr.status === 401) {
+          alert("User already registerd, Please Login.");
+        } else if (xhr.status === 400) {
+          alert("Password should be Same.");
+        } else {
+          alert("An error occurred. Please try again later.");
+        }
       },
     });
   });
@@ -38,6 +45,13 @@ $(document).ready(function () {
       },
       error: function (xhr, status, error) {
         console.error("There was a problem with the AJAX request:", error);
+        if (xhr.status === 404) {
+          alert("User not found. Please register.");
+        } else if (xhr.status === 401) {
+          alert("Incorrect password.");
+        } else {
+          alert("An error occurred. Please try again later.");
+        }
       },
     });
   });

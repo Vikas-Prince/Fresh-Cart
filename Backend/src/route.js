@@ -3,8 +3,8 @@ const path = require("path");
 
 const router = express.Router();
 
-const staticDir = path.join(__dirname, "../../frontend");
-const cartPath = path.join(__dirname, "../../frontend/cart");
+const staticDir = path.join(__dirname, "../../Frontend");
+const cartPath = path.join(__dirname, "../../Frontend/cart");
 
 router.get("/", function (req, res) {
   res.sendFile(path.join(staticDir, "Index.html"));

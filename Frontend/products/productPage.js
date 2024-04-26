@@ -9,7 +9,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/f2.png",
+    imagePath: "../Images/Fruits/f2.png",
     title: "Apple",
     price: 100,
     rating: 4.4,
@@ -18,7 +18,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/kiwi.png",
+    imagePath: "../Images/Fruits/kiwi.png",
     title: "Kiwi",
     price: 80,
     rating: 4.4,
@@ -27,7 +27,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/mango.png",
+    imagePath: "../Images/Fruits/mango.png",
     title: "Mango",
     quantity: "1 Dozen",
     price: 90,
@@ -36,7 +36,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/pear.png",
+    imagePath: "../Images/Fruits/pear.png",
     title: "Pear",
     price: 65,
     quantity: "1 Dozen",
@@ -44,7 +44,7 @@ const items = [
     category: "Fruits",
   },
   {
-    imagePath: "../Images/fruits/pine.png",
+    imagePath: "../Images/Fruits/pine.png",
     title: "Pine Apple",
     price: 25,
     quantity: "1 Unit",
@@ -52,7 +52,7 @@ const items = [
     category: "Fruits",
   },
   {
-    imagePath: "../Images/fruits/promo.png",
+    imagePath: "../Images/Fruits/promo.png",
     title: "Promogranate",
     price: 150,
     quantity: "1 Dozen",
@@ -60,7 +60,7 @@ const items = [
     category: "Fruits",
   },
   {
-    imagePath: "../Images/fruits/jack.png",
+    imagePath: "../Images/Fruits/jack.png",
     title: "Jack Fruit",
     price: 70,
     quantity: "1 unit",
@@ -69,7 +69,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/dates.png",
+    imagePath: "../Images/Fruits/dates.png",
     title: "Dates",
     price: 70,
     quantity: "1kg",
@@ -77,7 +77,7 @@ const items = [
     category: "Fruits",
   },
   {
-    imagePath: "../Images/fruits/peach.png",
+    imagePath: "../Images/Fruits/peach.png",
     title: "Jack Fruit",
     price: 100,
     quantity: "1 Dozen",
@@ -86,7 +86,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/lyche.png",
+    imagePath: "../Images/Fruits/lyche.png",
     title: "Lychees",
     price: 70,
     quantity: "1kg",
@@ -95,7 +95,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/Star.png",
+    imagePath: "../Images/Fruits/Star.png",
     title: "Star Fruit",
     price: 70,
     quantity: "1 Dozen",
@@ -104,7 +104,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/fig.png",
+    imagePath: "../Images/Fruits/fig.png",
     title: "Fig Fruit",
     price: 100,
     quantity: "1 kg",
@@ -112,7 +112,7 @@ const items = [
     category: "Fruits",
   },
   {
-    imagePath: "../Images/fruits/Cocunut.png",
+    imagePath: "../Images/Fruits/Cocunut.png",
     title: "Coconut",
     price: 20,
     quantity: "1 unit",
@@ -120,7 +120,7 @@ const items = [
     category: "Fruits",
   },
   {
-    imagePath: "../Images/fruits/tamrind.png",
+    imagePath: "../Images/Fruits/tamrind.png",
     title: "Tamarind",
     price: 55,
     quantity: "1Kg",
@@ -129,7 +129,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/plums.png",
+    imagePath: "../Images/Fruits/plums.png",
     title: "Plum Fruit",
     price: 75,
     quantity: "1Kg",
@@ -138,7 +138,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/jack.png",
+    imagePath: "../Images/Fruits/jack.png",
     title: "Jack Fruit",
     price: 70,
     quantity: "1 unit",
@@ -147,7 +147,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/goa.png",
+    imagePath: "../Images/Fruits/goa.png",
     title: "Gauva",
     quantity: "1 Dozen",
     price: 55,
@@ -165,7 +165,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/cherrys.png",
+    imagePath: "../Images/Fruits/cherrys.png",
     title: "Cherry's",
     quantity: "1 Kg",
     price: 120,
@@ -173,7 +173,7 @@ const items = [
     category: "Fruits",
   },
   {
-    imagePath: "../Images/fruits/dragon.png",
+    imagePath: "../Images/Fruits/dragon.png",
     title: "Dragon Fruit",
     quantity: "1 Dozen",
     price: 350,
@@ -181,7 +181,7 @@ const items = [
     category: "Fruits",
   },
   {
-    imagePath: "../Images/fruits/water.png",
+    imagePath: "../Images/Fruits/water.png",
     title: "Water Melon",
     price: 80,
     quantity: "1 unit",
@@ -190,7 +190,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/orange.png",
+    imagePath: "../Images/Fruits/orange.png",
     title: "Orange",
     quantity: "1 Dozen",
     price: 120,
@@ -198,7 +198,7 @@ const items = [
     category: "Fruits",
   },
   {
-    imagePath: "../Images/fruits/f3.png",
+    imagePath: "../Images/Fruits/f3.png",
     title: "Graphes",
     quantity: "1kg",
     price: 80,
@@ -215,7 +215,7 @@ const items = [
     category: "Fruits",
   },
   {
-    imagePath: "../Images/fruits/Chikko.png",
+    imagePath: "../Images/Fruits/Chikko.png",
     title: "Chikoos",
     price: 100,
     quantity: "1 Dozen",
@@ -224,7 +224,7 @@ const items = [
   },
 
   {
-    imagePath: "../Images/fruits/f4.png",
+    imagePath: "../Images/Fruits/f4.png",
     title: "Puppaya ",
     quantity: "1 unit",
     price: 25,

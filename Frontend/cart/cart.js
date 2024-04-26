@@ -244,8 +244,9 @@ $(document).ready(function () {
       url: "/order",
       data: formData,
       success: function (response) {
-        $("#responseMessage").text(response);
-        $(".toast").toast("show");
+        $("#responseContainer").show();
+
+        $("#cart-section").hide();
       },
       error: function (xhr, status, error) {
         console.error("There was a problem with the AJAX request:", error);
